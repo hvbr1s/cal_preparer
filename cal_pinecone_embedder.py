@@ -113,7 +113,6 @@ texts = [doc['text'] for doc in documents]
 
 # Print the total number of documents
 print(len(documents))
-print(texts)
 
 
 ################################## EMBEDDING ######################################
@@ -170,7 +169,7 @@ for i in tqdm(range(0, len(documents), batch_size)):
     # cleanup metadata
     meta_batch = [{
         'text': x['text'],
-        'chunk': x['chunk']
+        'chunk': x['chunk'],
     } for x in meta_batch]
     to_upsert = list(zip(ids_batch, embeds, meta_batch))
     # upsert to Pinecone
